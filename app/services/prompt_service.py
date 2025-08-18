@@ -1,5 +1,6 @@
-from app.models.prompt_model import PromptBase
-from app.repositories.prompt_repository import PromptRepository
+from models.prompt_model import PromptBase
+from repositories.prompt_repository import PromptRepository
+
 
 class PromptService:
     def __init__(self, repo: PromptRepository):

@@ -1,8 +1,8 @@
 # app/main.py
 import os
 from fastapi import FastAPI
-from app.api import prompts_controller
-from app.config.conjur_client import ConjurSecretProvider
+from api import prompts_controller
+from config.conjur_client import ConjurSecretProvider
 
 def fetch_and_set_conjur_secrets():
     """
