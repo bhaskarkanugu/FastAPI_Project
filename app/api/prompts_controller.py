@@ -1,10 +1,10 @@
 import os
 import pymssql # Import pymssql
 from fastapi import APIRouter, Depends, HTTPException
-from config.database import get_db
-from models.prompt_model import PromptBase
-from repositories.prompt_repository import PromptRepository
-from services.prompt_service import PromptService
+from app.config.database import get_db
+from app.models.prompt_model import PromptBase
+from app.repositories.prompt_repository import PromptRepository
+from app.services.prompt_service import PromptService
 
 router = APIRouter()
 
@@ -21,4 +21,5 @@ def get_prompt(id: int, conn: pymssql.Connection = Depends(get_db)):
         return service.get_prompt(id)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
-
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Internal Server Error")
